@@ -1,0 +1,24 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: XO2Contract
+    network: rinkeby
+    source:
+      address: "0xB74dDff23cf0C1D9ec9f0484908abBDd57fEB4c0"
+      abi: XO2Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Account
+        - TransactionHistory
+      abis:
+        - name: XO2Contract
+          file: XO2Contract/abis/XO2Contract.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransaction
+      file: XO2Contract/XO2Contract.wasm

@@ -1,0 +1,13 @@
+type Account @entity {
+  id: ID! # Address
+  address: Bytes!
+  balance: BigInt!
+}
+
+type TransactionHistory @entity {
+  id: ID! # Transaction Hash
+  txnHash: Bytes!
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+}
